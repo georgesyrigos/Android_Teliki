@@ -53,6 +53,19 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(TextUtils.isEmpty(username)) {
             mUsername.setError("Username is Required!");
+            return;
+        }
+        if(TextUtils.isEmpty(password)) {
+            mPassword.setError("Password is Required!");
+            return;
+        }
+        if(TextUtils.isEmpty(email)) {
+            mEmail.setError("Email is Required!");
+            return;
+        }
+        if(TextUtils.isEmpty(role)) {
+            mRole.setError("Role is Required!");
+            return;
         }
         fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener((task) -> {
             if (task.isSuccessful()){
