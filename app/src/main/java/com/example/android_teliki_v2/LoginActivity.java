@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             if (documentSnapshot.exists()) {
                                 String username = documentSnapshot.getString("username");
+                                //same for role and if clause to check and lead to the appropriate activity
                                 // Navigate to another activity and pass the username
                                 Intent intent = new Intent(LoginActivity.this, NewEventActivity.class);
                                 intent.putExtra("username", username);
