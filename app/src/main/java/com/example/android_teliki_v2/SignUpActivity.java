@@ -11,8 +11,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +32,8 @@ import java.util.Map;
 
 
 public class SignUpActivity extends AppCompatActivity {
-    EditText mUsername,mPassword,mEmail,mRole;
+    EditText mUsername,mPassword,mEmail;
+    Spinner mRole; // Changed to Spinner
     Button mSignupBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -43,8 +46,14 @@ public class SignUpActivity extends AppCompatActivity {
         mUsername = findViewById(R.id.UsernameText);
         mPassword = findViewById(R.id.PasswordText);
         mEmail = findViewById(R.id.EmailAddressText);
-        mRole = findViewById(R.id.RoleText);
+        mRole = findViewById(R.id.RoleSpinner);
         mSignupBtn = findViewById(R.id.signupButton);
+
+        // Set up Spinner with adapter containing user and employee choices
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.roles_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mRole.setAdapter(adapter);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -56,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
         String username = mUsername.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
         String email = mEmail.getText().toString().trim();
-        String role = mRole.getText().toString().trim();
+        String role = mRole.getSelectedItem().toString(); // Get selected role from Spinner
 
         if(TextUtils.isEmpty(username)) {
             mUsername.setError("Username is Required!");
@@ -70,8 +79,8 @@ public class SignUpActivity extends AppCompatActivity {
             mEmail.setError("Email is Required!");
             return;
         }
-        if(TextUtils.isEmpty(role)) {
-            mRole.setError("Role is Required!");
+        if (TextUtils.isEmpty(role)) {
+            Toast.makeText(this, "Role is Required!", Toast.LENGTH_SHORT).show();
             return;
         }
         fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener((task) -> {
