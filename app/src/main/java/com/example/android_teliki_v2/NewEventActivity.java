@@ -13,16 +13,5 @@ public class NewEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_event);
 
 
-        // Retrieve the username from the intent
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("username")) {
-            String username = intent.getStringExtra("username");
-
-            // Display the username in a TextView
-            TextView textViewUsername = findViewById(R.id.textView7);
-            if (textViewUsername != null) {
-                textViewUsername.setText("Hello " + username);
-            }
-        }
     }
 }

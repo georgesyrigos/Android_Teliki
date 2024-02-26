@@ -66,12 +66,30 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             if (documentSnapshot.exists()) {
                                 String username = documentSnapshot.getString("username");
-                                //same for role and if clause to check and lead to the appropriate activity
-                                // Navigate to another activity and pass the username
-                                Intent intent = new Intent(LoginActivity.this, NewEventActivity.class);
-                                intent.putExtra("username", username);
-                                startActivity(intent);
-                                finish();
+                                String role = documentSnapshot.getString("role");
+
+                                if (role != null) {
+                                    if (role.equals("user")) {
+                                        // Navigate to Activity1
+                                        Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                                        intent.putExtra("username", username);
+                                        startActivity(intent);
+                                        finish();
+                                    } else if (role.equals("employee")) {
+                                        // Navigate to Activity2
+                                        Intent intent = new Intent(LoginActivity.this,EmployeeActivity.class);
+                                        intent.putExtra("username", username);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        // Handle unexpected role value
+                                        Toast.makeText(LoginActivity.this, "Unknown role: " + role, Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    // Handle missing role field
+                                    Toast.makeText(LoginActivity.this, "Role field is missing", Toast.LENGTH_SHORT).show();
+                                }
+
                             }
                             else {
                                 Toast.makeText(LoginActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
