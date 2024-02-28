@@ -34,4 +34,8 @@ public class UserActivity extends AppCompatActivity {
         startActivity(new Intent(UserActivity.this, LoginActivity.class)); // Redirect to LoginActivity
         finish(); // Close current activity
     }
+    public void addEvent(View view){
+        startActivity(new Intent(UserActivity.this, NewEventActivity.class)); // Redirect to LoginActivity
+        finish(); // Close current activity
+    }
 }
