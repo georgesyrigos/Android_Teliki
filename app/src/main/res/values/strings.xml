@@ -4,4 +4,10 @@
         <item>user</item>
         <item>employee</item>
     </string-array>
+    <string-array name="events_array">
+        <item>Flood</item>
+        <item>Fire</item>
+        <item>Earthquake</item>
+        <item>Other</item>
+    </string-array>
 </resources>
