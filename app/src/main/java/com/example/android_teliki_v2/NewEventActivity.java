@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -26,7 +27,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+
+import android.location.Address;
+import android.location.Geocoder;
+import java.util.List;
+import java.io.IOException;
+import java.util.Map;
 
 public class NewEventActivity extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
@@ -66,11 +74,6 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
         String username = mUsername.getText().toString().trim();
         String event = mEvent.getSelectedItem().toString(); // Get selected role from Spinner
         String comment = mComment.getText().toString().trim();
-        // Get current timestamp
-        Date currentDate = new Date();
-        String timestamp = formatDate(currentDate);
-        Integer points = 0;
-        String situation = "pending";
 
         if (username.isEmpty() || comment.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -85,18 +88,7 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-
-        // Show current values using showMessage
-        showMessage("Current Values",
-                "Username: " + username + "\n" +
-                        "Event: " + event + "\n" +
-                        "Comment: " + comment + "\n" +
-                        "Timestamp: " + timestamp + "\n" +
-                        "Points: " + points + "\n" +
-                        "Situation: " + situation + "\n" +
-                        "Latitude: " + x + "\n" +
-                        "Longitude: " + y);
-
+        Toast.makeText(this, "Event submitted!", Toast.LENGTH_SHORT).show();
 
 
     }
@@ -105,25 +97,103 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
 
     //message that the user sees
     private void showMessage(String Title,String message){
-        new AlertDialog.Builder(this)
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+        //new AlertDialog.Builder(this)
                 .setTitle(Title)
                 .setMessage(message)
-                .show();
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User clicked OK button
+                        Intent intent = new Intent(NewEventActivity.this, UserActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        // Assuming location is an instance of Location class
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+
+
+        Geocoder geocoder = new Geocoder(this, Locale.ENGLISH);
+        String locationName = getLocationFromCoordinates(latitude, longitude, geocoder);
+
         //latitude
         x = String.valueOf(location.getLatitude());
         //longitude
         y = String.valueOf(location.getLongitude());
-        //textView.setText(x);
+
+        String username = mUsername.getText().toString().trim();
+        String event = mEvent.getSelectedItem().toString(); // Get selected role from Spinner
+        String comment = mComment.getText().toString().trim();
+        // Get current timestamp
+        Date currentDate = new Date();
+        String timestamp = formatDate(currentDate);
+        Integer points = 0;
+        String situation = "pending";
+
+        // Show current values using showMessage
+        showMessage("Submitted Event",
+                "Username: " + username + "\n" +
+                        "Event: " + event + "\n" +
+                        "Comment: " + comment + "\n" +
+                        "Timestamp: " + timestamp + "\n" +
+                        "Location: " + locationName + "\n" +
+                        "Latitude: " + x + "\n" +
+                        "Longitude: " + y);
 
 
 
+        // Create a map to store the data
+        Map<String, Object> eventData = new HashMap<>();
+        eventData.put("Username", username);
+        eventData.put("Event", event);
+        eventData.put("Comment", comment);
+        eventData.put("Timestamp", timestamp);
+        eventData.put("Points", points);
+        eventData.put("Situation", situation);
+        eventData.put("Location", locationName);
+
+
+        // Add a new document with a generated ID
+        fStore.collection("events")
+                .add(eventData)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(this, "Added to database!", Toast.LENGTH_SHORT).show();
+                    // Document added successfully
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error occurred!", Toast.LENGTH_SHORT).show();
+                    // Error occurred while adding document
+                });
+
+
+        locationManager.removeUpdates(this);
     }
 
-
+    //convert coordinates to location
+    private String getLocationFromCoordinates(double latitude, double longitude, Geocoder geocoder) {
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                // Get the locality (city) or other relevant information
+                String cityName = address.getLocality();
+                if (cityName != null && !cityName.isEmpty()) {
+                    return cityName;
+                } else {
+                    return "Unnamed Location";
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Location not found";
+    }
 
     private String formatDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
