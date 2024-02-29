@@ -24,6 +24,10 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class NewEventActivity extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
     String x,y;
@@ -62,9 +66,11 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
         String username = mUsername.getText().toString().trim();
         String event = mEvent.getSelectedItem().toString(); // Get selected role from Spinner
         String comment = mComment.getText().toString().trim();
-        //String timestamp = Timestamp.now().toString();
-        //Integer points = 0;
-        //String situation = "pending";
+        // Get current timestamp
+        Date currentDate = new Date();
+        String timestamp = formatDate(currentDate);
+        Integer points = 0;
+        String situation = "pending";
 
         if (username.isEmpty() || comment.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -80,6 +86,16 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
+        // Show current values using showMessage
+        showMessage("Current Values",
+                "Username: " + username + "\n" +
+                        "Event: " + event + "\n" +
+                        "Comment: " + comment + "\n" +
+                        "Timestamp: " + timestamp + "\n" +
+                        "Points: " + points + "\n" +
+                        "Situation: " + situation + "\n" +
+                        "Latitude: " + x + "\n" +
+                        "Longitude: " + y);
 
 
 
@@ -103,5 +119,16 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
         y = String.valueOf(location.getLongitude());
         //textView.setText(x);
 
+
+
     }
+
+
+
+    private String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault());
+        return sdf.format(date);
+    }
+
+
 }
