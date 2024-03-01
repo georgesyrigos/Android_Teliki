@@ -15,7 +15,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class EmployeeActivity extends AppCompatActivity {
+public class EmployeeActivity extends AppCompatActivity implements EventAdapter.OnItemClickListener{
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
 
@@ -47,6 +47,8 @@ public class EmployeeActivity extends AppCompatActivity {
                 .build();
 
         adapter = new EventAdapter(options);
+        adapter.setOnItemClickListener(this); // Set the click listener
+
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -54,6 +56,8 @@ public class EmployeeActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
     }
+
+
 
     @Override
     protected void onStart() {
@@ -71,5 +75,12 @@ public class EmployeeActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut(); // Sign out the user
         startActivity(new Intent(EmployeeActivity.this, LoginActivity.class)); // Redirect to LoginActivity
         finish(); // Close current activity
+    }
+
+    @Override
+    public void onItemClick(Event event) {
+        Intent intent = new Intent(EmployeeActivity.this, EventDetailsActivity.class);
+        intent.putExtra("event", event); // Pass clicked event to EventDetailsActivity
+        startActivity(intent);
     }
 }

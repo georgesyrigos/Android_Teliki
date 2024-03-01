@@ -12,6 +12,16 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class EventAdapter extends FirestoreRecyclerAdapter<Event, EventAdapter.EventHolder>{
 
+    private OnItemClickListener listener; // Define listener
+
+    // Interface to handle item clicks
+    public interface OnItemClickListener {
+        void onItemClick(Event event);
+    }
+    // Method to set the listener
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public EventAdapter(@NonNull FirestoreRecyclerOptions<Event> options) {
         super(options);
@@ -22,6 +32,15 @@ public class EventAdapter extends FirestoreRecyclerAdapter<Event, EventAdapter.E
         holder.textViewEvent.setText(model.getEvent());
         holder.textViewUsername.setText(model.getUsername());
         holder.textViewComment.setText(model.getComment());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onItemClick(model); // Pass clicked event to the listener
+                }
+            }
+        });
 
     }
 
