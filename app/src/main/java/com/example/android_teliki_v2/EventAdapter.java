@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class EventAdapter extends FirestoreRecyclerAdapter<Event, EventAdapter.EventHolder>{
 
@@ -16,7 +17,7 @@ public class EventAdapter extends FirestoreRecyclerAdapter<Event, EventAdapter.E
 
     // Interface to handle item clicks
     public interface OnItemClickListener {
-        void onItemClick(Event event);
+        void onItemClick(String documentId, Event event);
     }
     // Method to set the listener
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -37,7 +38,9 @@ public class EventAdapter extends FirestoreRecyclerAdapter<Event, EventAdapter.E
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onItemClick(model); // Pass clicked event to the listener
+                    DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
+                    String documentId = snapshot.getId();
+                    listener.onItemClick(documentId, model);
                 }
             }
         });

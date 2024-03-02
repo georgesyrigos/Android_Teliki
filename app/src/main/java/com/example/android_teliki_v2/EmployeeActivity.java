@@ -78,8 +78,9 @@ public class EmployeeActivity extends AppCompatActivity implements EventAdapter.
     }
 
     @Override
-    public void onItemClick(Event event) {
+    public void onItemClick(String documentId, Event event) {
         Intent intent = new Intent(EmployeeActivity.this, EventDetailsActivity.class);
+        intent.putExtra("eventId", documentId); // Pass the document ID to EventDetailsActivity
         intent.putExtra("event", event); // Pass clicked event to EventDetailsActivity
         startActivity(intent);
     }

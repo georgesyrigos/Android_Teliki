@@ -35,6 +35,7 @@ public class Event implements Parcelable {
     }
 
     public String getEvent() {
+
         return Event;
     }
 
