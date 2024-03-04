@@ -1,5 +1,6 @@
 package com.example.android_teliki_v2;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -28,6 +29,9 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -92,13 +96,6 @@ public class UserActivity extends AppCompatActivity implements LocationListener 
         Geocoder geocoder = new Geocoder(this, Locale.ENGLISH);
         currentLocationName = getLocationFromCoordinates(latitude, longitude, geocoder);
 
-        // Process the current location as needed
-        // For example, you can display it in a TextView
-        TextView textViewLocation = findViewById(R.id.textView18);
-        if (textViewLocation != null) {
-            textViewLocation.setText("Current Location: " + currentLocationName);
-        }
-
         // Perform further processing or checks here
         // For example, check for dangerous events in the vicinity
         checkForDangerousEvents();
@@ -111,6 +108,11 @@ public class UserActivity extends AppCompatActivity implements LocationListener 
         // You can use the currentLocationName or latitude/longitude as needed
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference eventsRef = db.collection("events");
+
+        // Get the current date
+        Calendar currentDate = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
 
         // Query for events with situation "confirmed" and matching location
         db.collection("events")
@@ -126,12 +128,33 @@ public class UserActivity extends AppCompatActivity implements LocationListener 
                                 String eventLocation = document.getString("Location");
                                 String timestamp = document.getString("Timestamp");
                                 String additionalInfo = document.getString("Comment");
-                                // Show the message with event details
-                                showMessage("You are in danger", "Event Type: " + eventType + "\n" +
-                                        "Location: " + eventLocation + "\n" +
-                                        "Timestamp: " + timestamp + "\n" +
-                                        "Additional Information: " + additionalInfo);
-                                return; // Exit loop after displaying the message once
+                                if ("Fire".equals(eventType)){
+                                    additionalInfo = "Get as far as you can from the fire!";
+                                }
+                                else if ("Earthquake".equals(eventType)){
+                                    additionalInfo = "Get away from any building and stay outside!";
+                                }
+                                else if ("Flood".equals(eventType)){
+                                    additionalInfo = "Get to a tall and stable building!";
+                                }
+                                try {
+                                    Date eventDate = dateFormat.parse(timestamp);
+                                    Calendar eventCalendar = Calendar.getInstance();
+                                    eventCalendar.setTime(eventDate);
+
+                                    // Check if the event is on the same day as the current date
+                                    if (isSameDay(currentDate, eventCalendar)) {
+                                        // Show the message with event details
+                                        showMessage("You are in danger",
+                                                "Event Type: " + eventType + "\n" +
+                                                "Location: " + eventLocation + "\n" +
+                                                "Timestamp: " + timestamp + "\n" +
+                                                "Additional Information: " + additionalInfo);
+                                        return; // Exit loop after displaying the message once
+                                    }
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         } else {
                             Toast.makeText(UserActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -172,5 +195,12 @@ public class UserActivity extends AppCompatActivity implements LocationListener 
                 });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    // Helper method to check if two Calendar instances represent the same day
+    private boolean isSameDay(Calendar calendar1, Calendar calendar2) {
+        return calendar1.get(Calendar.YEAR) == calendar2.get(Calendar.YEAR) &&
+                calendar1.get(Calendar.MONTH) == calendar2.get(Calendar.MONTH) &&
+                calendar1.get(Calendar.DAY_OF_MONTH) == calendar2.get(Calendar.DAY_OF_MONTH);
     }
 }
