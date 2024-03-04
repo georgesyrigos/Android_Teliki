@@ -1,15 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Android_Teliki_v2</string>
-    <string-array name="roles_array">
-        <item>user</item>
-        <item>employee</item>
-    </string-array>
-    <string-array name="events_array">
-        <item>Flood</item>
-        <item>Fire</item>
-        <item>Earthquake</item>
-        <item>Other</item>
-    </string-array>
     <string name="empage">Employee Page</string>
     <string name="usn">Username</string>
     <string name="log">login</string>
@@ -40,6 +30,4 @@
     <string name="aev">Add event</string>
     <string name="earth">Earthquake</string>
     <string name="bd">Big Disaster</string>
-
-
 </resources>
