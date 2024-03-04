@@ -36,7 +36,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class UserActivity extends AppCompatActivity implements LocationListener {
+public class UserActivity extends AppCompat implements LocationListener {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private LocationManager locationManager;
     private String currentLocationName;

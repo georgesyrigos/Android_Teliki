@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class EventDetailsActivity extends AppCompatActivity {
+public class EventDetailsActivity extends AppCompat {
     TextView tvEvent,tvUser,tvComment,tvLocation,tvTimestamp,tvPoints,tvSituation;
     // Declare eventId
     private String eventId;

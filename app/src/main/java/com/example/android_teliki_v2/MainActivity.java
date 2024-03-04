@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompat {
     TextView textView4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
