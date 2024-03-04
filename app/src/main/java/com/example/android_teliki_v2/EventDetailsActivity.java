@@ -71,6 +71,7 @@ public class EventDetailsActivity extends AppCompatActivity {
                         Toast.makeText(EventDetailsActivity.this, "Event confirmed", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent( EventDetailsActivity.this ,EmployeeActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
