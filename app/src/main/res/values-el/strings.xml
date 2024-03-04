@@ -13,16 +13,16 @@
     <string name="bck">Πίσω</string>
     <string name="conf">Επιβεβαίωση</string>
     <string name="den">Άρνηση</string>
-    <string name="sip">Σελλίδα εγγραφής</string>
+    <string name="sip">Σελλίδα Σύνδεσης</string>
     <string name="em">Email</string>
     <string name="pass">Κωδικός</string>
-    <string name="sin">Εγγραφή</string>
+    <string name="sin">Σύνδεση</string>
     <string name="wtsa">Καλωσορίσατε στο Smart alert</string>
     <string name="ahaa">Έχετε ήδη λογαριασμό;</string>
     <string name="wel">Καλωσορίσατε</string>
     <string name="dhaa">Δεν έχετε λογαριασμό;</string>
-    <string name="sup">Sign up</string>
-    <string name="aep">Προσθέστε σελίδα κατάστασης</string>
+    <string name="sup">Εγγραφή</string>
+    <string name="aep">Νέο περιστατικό</string>
     <string name="sub">Καταχώρηση</string>
     <string name="rol">Ρόλος</string>
     <string name="usp">Σελίδα χρήστη</string>
@@ -30,4 +30,7 @@
     <string name="aev">Προσθήκη</string>
     <string name="earth">Σεισμός</string>
     <string name="bd">Μεγάλη καταστροφή</string>
+    <string name="supp">Σελίδα Εγγραφής</string>
+    <string name="el">Ελληνικά</string>
+    <string name="en">Αγγλικά</string>
 </resources>

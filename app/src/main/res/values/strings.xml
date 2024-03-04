@@ -23,11 +23,11 @@
     <string name="bck">Back</string>
     <string name="conf">Confirm</string>
     <string name="den">Deny</string>
-    <string name="sip">Sign in page</string>
+    <string name="sip">Sign in Page</string>
     <string name="em">Email</string>
     <string name="pass">Password</string>
     <string name="sin">Sign in</string>
-    <string name="wtsa">Welcome to smart alert</string>
+    <string name="wtsa">Welcome to Smart Alert</string>
     <string name="ahaa">Already have an account?</string>
     <string name="wel">Welcome</string>
     <string name="dhaa">Dont have an account?</string>
@@ -40,6 +40,9 @@
     <string name="aev">Add event</string>
     <string name="earth">Earthquake</string>
     <string name="bd">Big Disaster</string>
+    <string name="supp">Sign up Page</string>
+    <string name="el">Greek</string>
+    <string name="en">English</string>
 
 
 </resources>
