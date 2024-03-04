@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event type :"
+                android:text="@string/evt"
                 android:textColor="@color/black"
                 android:textSize="22sp"/>
 
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tveventType"
                 android:layout_marginStart="8dp"
-                android:text="Earthquake"
+                android:text="@string/earth"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 
@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username :"
+                android:text="@string/usn"
                 android:textColor="@color/black"
                 android:textSize="22sp"/>
 
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comment :"
+                android:text="@string/comm"
                 android:textColor="@color/black"
                 android:textSize="22sp"/>
 
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvcomment"
                 android:layout_marginStart="8dp"
-                android:text="Big disaster"
+                android:text="@string/bd"
                 android:textColor="@color/black"
                 android:textSize="20sp"/>
 

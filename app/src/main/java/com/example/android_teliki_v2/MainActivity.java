@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
             return;
         }
+        ImageButton el = findViewById(R.id.btn_el);
+        LanguageManager lang = new LanguageManager(this);
+        el.setOnClickListener(view ->{
+            lang.updateResource("el");
+            recreate();
+
+        });
+        findViewById(R.id.button2).setOnClickListener(view ->{
+
+        });
 
     }
     public void login(View view){
