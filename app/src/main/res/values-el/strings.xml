@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="empage">Σελίδα υπαλλήλων</string>
-    <string name="usn">Όνομα χρήστη</string>
+    <string name="usn">Χρήστης</string>
     <string name="log">Σύνδεση</string>
     <string name="comm">Σχόλιο</string>
     <string name="loc">Τοποθεσία</string>
@@ -13,13 +13,14 @@
     <string name="bck">Πίσω</string>
     <string name="conf">Επιβεβαίωση</string>
     <string name="den">Άρνηση</string>
-    <string name="sip">Σελλίδα Σύνδεσης</string>
+    <string name="sip">Σελίδα Σύνδεσης</string>
     <string name="em">Email</string>
     <string name="pass">Κωδικός</string>
     <string name="sin">Σύνδεση</string>
-    <string name="wtsa">Καλωσορίσατε στο Smart alert</string>
+    <string name="wtsa">Καλωσορίσατε στο Smart Alert</string>
     <string name="ahaa">Έχετε ήδη λογαριασμό;</string>
-    <string name="wel">Καλωσορίσατε</string>
+    <string name="wel">Ειδοποιήσεις για τους κοντινότερους κινδύνους</string>
+    <string name="dis">Πλυμμήρες, Φωτιές, Σεισμοί, Άλλες φυσικές καταστροφές</string>
     <string name="dhaa">Δεν έχετε λογαριασμό;</string>
     <string name="sup">Εγγραφή</string>
     <string name="aep">Νέο περιστατικό</string>

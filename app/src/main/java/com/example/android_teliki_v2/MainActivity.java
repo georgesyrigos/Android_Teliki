@@ -19,8 +19,6 @@ public class MainActivity extends AppCompat {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView4 = findViewById(R.id.textView4);
-        textView4.setText("Notification for the nearest dangers\n\nFloods, Fires, Earthquakes, Other natural disasters");
-
         if (ActivityCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
@@ -38,6 +36,9 @@ public class MainActivity extends AppCompat {
             lang.updateResource("el");
             recreate();
         });
+
+
+
 
 
 

@@ -80,8 +80,8 @@
 
     <EditText
         android:id="@+id/UsernameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="179dp"
+        android:layout_height="47dp"
         android:layout_marginTop="172dp"
         android:ems="10"
         android:hint="Username"
@@ -93,18 +93,18 @@
 
     <Spinner
         android:id="@+id/RoleSpinner"
-        android:layout_width="177dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="424dp"
+        android:layout_width="138dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="428dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/PasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="47dp"
         android:layout_marginTop="256dp"
         android:ems="10"
         android:hint="Password"
@@ -116,8 +116,8 @@
 
     <EditText
         android:id="@+id/EmailAddressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="45dp"
         android:layout_marginTop="352dp"
         android:ems="10"
         android:hint="Email"

@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <TextView
         android:id="@+id/textView8"
@@ -68,8 +68,8 @@
 
     <EditText
         android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="48dp"
         android:layout_marginTop="180dp"
         android:ems="10"
         android:hint="Username"
@@ -81,8 +81,8 @@
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="171dp"
+        android:layout_height="44dp"
         android:layout_marginTop="388dp"
         android:ems="10"
         android:hint="Add comment"
@@ -94,8 +94,8 @@
 
     <Spinner
         android:id="@+id/EventSpinner"
-        android:layout_width="215dp"
-        android:layout_height="39dp"
+        android:layout_width="168dp"
+        android:layout_height="42dp"
         android:layout_marginTop="290dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.862"
