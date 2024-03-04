@@ -104,8 +104,11 @@ public class NewEventActivity extends AppCompatActivity implements LocationListe
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User clicked OK button
+                        String username = mUsername.getText().toString().trim();
                         Intent intent = new Intent(NewEventActivity.this, UserActivity.class);
+                        intent.putExtra("username", username);
                         startActivity(intent);
+                        finish();
                     }
                 });
         AlertDialog dialog = builder.create();
