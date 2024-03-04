@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.List;
 
-public class EmployeeActivity extends AppCompatActivity implements EventAdapter.OnItemClickListener{
+public class EmployeeActivity extends AppCompat implements EventAdapter.OnItemClickListener{
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference eventsRef = db.collection("events");
 

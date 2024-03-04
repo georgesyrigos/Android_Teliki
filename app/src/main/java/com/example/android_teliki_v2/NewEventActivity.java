@@ -36,7 +36,7 @@ import java.util.List;
 import java.io.IOException;
 import java.util.Map;
 
-public class NewEventActivity extends AppCompatActivity implements LocationListener {
+public class NewEventActivity extends AppCompat implements LocationListener {
     LocationManager locationManager;
     String x,y;
     EditText mUsername, mComment;

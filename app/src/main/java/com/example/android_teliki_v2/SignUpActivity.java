@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompat {
     EditText mUsername,mPassword,mEmail;
     Spinner mRole; // Changed to Spinner
     Button mSignupBtn;
