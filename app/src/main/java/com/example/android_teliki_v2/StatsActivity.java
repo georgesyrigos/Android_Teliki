@@ -74,15 +74,15 @@ public class StatsActivity extends AppCompatActivity {
     private void updateTextViews() {
         // Update TextViews with count values
         TextView fireTextView = findViewById(R.id.textView_fire);
-        fireTextView.setText(fireCount + " Fire Events");
+        fireTextView.setText("Fire Events: " + fireCount );
 
         TextView floodTextView = findViewById(R.id.textView_flood);
-        floodTextView.setText(floodCount + " Flood Events");
+        floodTextView.setText("Flood Events: " + floodCount);
 
         TextView earthquakeTextView = findViewById(R.id.textView_earthquake);
-        earthquakeTextView.setText(earthquakeCount + " Earthquake Events");
+        earthquakeTextView.setText("Earthquake Events: " + earthquakeCount);
 
         TextView otherTextView = findViewById(R.id.textView_other);
-        otherTextView.setText(otherCount + " Other Events");
+        otherTextView.setText(" Other Events: " + otherCount);
     }
 }
