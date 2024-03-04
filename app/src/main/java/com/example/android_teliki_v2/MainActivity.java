@@ -28,11 +28,16 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         Button el = findViewById(R.id.btn_el);
+        Button en = findViewById(R.id.btn_en);
         LanguageManager lang = new LanguageManager(this);
         el.setOnClickListener(view ->{
             lang.updateResource("el");
             recreate();
 
+        });
+        en.setOnClickListener(view ->{
+            lang.updateResource("en");
+            recreate();
         });
 
 
