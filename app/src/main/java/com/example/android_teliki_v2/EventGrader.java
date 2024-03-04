@@ -16,8 +16,6 @@ public class EventGrader {
     // Method to calculate points for an event based on given criteria
     public static int calculatePoints(Event event, List<Event> allEvents) {
         int points = 0;
-        StringBuilder messageBuilder = new StringBuilder(); // Use StringBuilder to concatenate messages
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
         // Parse the event's timestamp string to obtain a Date object
