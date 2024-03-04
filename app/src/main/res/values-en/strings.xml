@@ -3,6 +3,7 @@
     <string name="empage">Employee Page</string>
     <string name="usn">Username</string>
     <string name="log">Login</string>
+    <string name="st">Stats</string>
     <string name="comm">Comment</string>
     <string name="loc">Location</string>
     <string name="time">Timestamp</string>

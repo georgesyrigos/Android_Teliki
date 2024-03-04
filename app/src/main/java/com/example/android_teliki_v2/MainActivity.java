@@ -53,5 +53,12 @@ public class MainActivity extends AppCompat {
         startActivity(intent);
     }
 
+    public void stats(View view){
+        Intent intent = new Intent(MainActivity.this, StatsActivity.class);
+        startActivity(intent);
+    }
+
+
+
 }
 

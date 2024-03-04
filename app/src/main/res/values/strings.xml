@@ -12,6 +12,7 @@
     </string-array>
     <string name="empage">Employee Page</string>
     <string name="usn">Username</string>
+    <string name="st">Stats</string>
     <string name="log">login</string>
     <string name="comm">Comment</string>
     <string name="loc">Location</string>
@@ -30,7 +31,8 @@
     <string name="wtsa">Welcome to Smart Alert</string>
     <string name="ahaa">Already have an account?</string>
     <string name="wel">Notification for the nearest dangers</string>
-    <string name="dis">Floods, Fires, Earthquakes, Other natural disasters</string>    <string name="dhaa">Dont have an account?</string>
+    <string name="dis">Floods, Fires, Earthquakes, Other natural disasters</string>
+    <string name="dhaa">Dont have an account?</string>
     <string name="sup">Sign up</string>
     <string name="aep">Add event page</string>
     <string name="sub">Submit</string>
