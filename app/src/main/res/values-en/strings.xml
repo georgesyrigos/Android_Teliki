@@ -1,15 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Android_Teliki_v2</string>
-    <string-array name="roles_array">
-        <item>user</item>
-        <item>employee</item>
-    </string-array>
-    <string-array name="events_array">
-        <item>Flood</item>
-        <item>Fire</item>
-        <item>Earthquake</item>
-        <item>Other</item>
-    </string-array>
     <string name="empage">Employee Page</string>
     <string name="usn">Username</string>
     <string name="log">login</string>
@@ -23,11 +13,11 @@
     <string name="bck">Back</string>
     <string name="conf">Confirm</string>
     <string name="den">Deny</string>
-    <string name="sip">Sign in Page</string>
+    <string name="sip">Sign in page</string>
     <string name="em">Email</string>
     <string name="pass">Password</string>
     <string name="sin">Sign in</string>
-    <string name="wtsa">Welcome to Smart Alert</string>
+    <string name="wtsa">Welcome to smart alert</string>
     <string name="ahaa">Already have an account?</string>
     <string name="wel">Welcome</string>
     <string name="dhaa">Dont have an account?</string>
@@ -40,9 +30,4 @@
     <string name="aev">Add event</string>
     <string name="earth">Earthquake</string>
     <string name="bd">Big Disaster</string>
-    <string name="supp">Sign up Page</string>
-    <string name="el">Greek</string>
-    <string name="en">English</string>
-
-
 </resources>

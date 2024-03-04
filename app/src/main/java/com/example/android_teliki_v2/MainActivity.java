@@ -30,15 +30,15 @@ public class MainActivity extends AppCompat {
         Button el = findViewById(R.id.btn_el);
         Button en = findViewById(R.id.btn_en);
         LanguageManager lang = new LanguageManager(this);
-        el.setOnClickListener(view ->{
-            lang.updateResource("el");
-            recreate();
-
-        });
         en.setOnClickListener(view ->{
             lang.updateResource("en");
             recreate();
         });
+        el.setOnClickListener(view ->{
+            lang.updateResource("el");
+            recreate();
+        });
+
 
 
     }
@@ -52,8 +52,5 @@ public class MainActivity extends AppCompat {
         startActivity(intent);
     }
 
-    public class world{
-
-    }
 }
 
