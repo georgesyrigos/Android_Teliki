@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empage">Σελίδα υπαλλήλων</string>
+    <string name="usn">Όνομα χρήστη</string>
+    <string name="log">Σύνδεση</string>
+    <string name="comm">Σχόλιο</string>
+    <string name="loc">Τοποθεσία</string>
+    <string name="time">Xρονική σφραγίδα</string>
+    <string name="point">Πόντοι</string>
+    <string name="sit">Κατάσταση</string>
+    <string name="evd">Λεπτομέρειες</string>
+    <string name="evt">Τύπος</string>
+    <string name="bck">Πίσω</string>
+    <string name="conf">Επιβεβαίωση</string>
+    <string name="den">Άρνηση</string>
+    <string name="sip">Σελλίδα εγγραφής</string>
+    <string name="em">Email</string>
+    <string name="pass">Κωδικός</string>
+    <string name="sin">Εγγραφή</string>
+    <string name="wtsa">Καλωσορίσατε στο Smart alert</string>
+    <string name="ahaa">Έχετε ήδη λογαριασμό;</string>
+    <string name="wel">Καλωσορίσατε</string>
+    <string name="dhaa">Δεν έχετε λογαριασμό;</string>
+    <string name="sup">Sign up</string>
+    <string name="aep">Προσθέστε σελίδα κατάστασης</string>
+    <string name="sub">Καταχώρηση</string>
+    <string name="rol">Ρόλος</string>
+    <string name="usp">Σελίδα χρήστη</string>
+    <string name="lout">Αποσύνδεση</string>
+    <string name="aev">Προσθήκη</string>
+    <string name="earth">Σεισμός</string>
+    <string name="bd">Μεγάλη καταστροφή</string>
+</resources>
