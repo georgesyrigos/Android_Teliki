@@ -8,12 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.List;
 
 public class EmployeeActivity extends AppCompatActivity implements EventAdapter.OnItemClickListener{
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -63,6 +67,7 @@ public class EmployeeActivity extends AppCompatActivity implements EventAdapter.
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+        gradeEvents(); // Call the method to grade events when the activity starts
     }
 
     @Override
@@ -83,5 +88,19 @@ public class EmployeeActivity extends AppCompatActivity implements EventAdapter.
         intent.putExtra("eventId", documentId); // Pass the document ID to EventDetailsActivity
         intent.putExtra("event", event); // Pass clicked event to EventDetailsActivity
         startActivity(intent);
+    }
+
+    // Method to grade all events and update Firestore with calculated points
+    private void gradeEvents() {
+        eventsRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                Event event = documentSnapshot.toObject(Event.class);
+                String documentId = documentSnapshot.getId(); // Retrieve the document ID
+                int points = EventGrader.calculatePoints(event, queryDocumentSnapshots.toObjects(Event.class));
+                eventsRef.document(documentId).update("Points", points);
+            }
+        }).addOnFailureListener(e -> {
+            // Handle failure
+        });
     }
 }
