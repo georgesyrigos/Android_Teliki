@@ -113,5 +113,9 @@ public class LoginActivity extends AppCompat {
         });
 
     }
+    public void returnHome(View view){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
 }

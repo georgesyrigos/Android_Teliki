@@ -1,14 +1,18 @@
 package com.example.android_teliki_v2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -34,10 +38,20 @@ public class StatsActivity extends AppCompatActivity {
     private void retrieveEventData() {
         db.collection("events")
                 .whereEqualTo("Situation", "confirmed")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            //Toast.makeText(StatsActivity.this, "Failed to retrieve stats", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        // Clear counts before updating
+                        fireCount = 0;
+                        floodCount = 0;
+                        earthquakeCount = 0;
+                        otherCount = 0;
+
                         // Iterate through documents
                         for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                             // Check event type and update counts
@@ -59,14 +73,9 @@ public class StatsActivity extends AppCompatActivity {
                                 }
                             }
                         }
+
                         // Update TextViews with counts
                         updateTextViews();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
                     }
                 });
     }
