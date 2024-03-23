@@ -7,6 +7,7 @@
     <string name="comm">Comment</string>
     <string name="loc">Location</string>
     <string name="time">Timestamp</string>
+    <string name="home">Home</string>
     <string name="point">Points</string>
     <string name="sit">Situation</string>
     <string name="evd">Event details</string>

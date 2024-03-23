@@ -18,13 +18,7 @@ public class MainActivity extends AppCompat {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView4 = findViewById(R.id.textView4);
-        if (ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
-            return;
-        }
+
         Button el = findViewById(R.id.btn_el);
         Button en = findViewById(R.id.btn_en);
         LanguageManager lang = new LanguageManager(this);
@@ -37,6 +31,13 @@ public class MainActivity extends AppCompat {
             recreate();
         });
 
+        textView4 = findViewById(R.id.textView4);
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+            return;
+        }
 
 
 

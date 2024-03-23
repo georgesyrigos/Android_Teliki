@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="512dp"
         android:onClick="returnHome"
-        android:text="Home"
+        android:text="@string/home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
